@@ -17,5 +17,7 @@ func HandleRequest(ctx context.Context, event MyEvent) (string, error) {
   fmt.Println("Hello World")
   dk := auth.ConstructHash(2000, []byte("salty"), []byte("Hell World"))
   fmt.Println(dk)
+  auth.ReadPassword([]byte("hello"), []byte("world"))
+  auth.Test()
   return "Hello World", nil
 }

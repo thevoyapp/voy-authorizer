@@ -23,13 +23,16 @@ Resources:
               - "sts:AssumeRole"
       Path: /lambda/authorizer/
       Policies:
-        - PolicyName: UploadLambda
+        - PolicyName: AuthorizerLambda
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action: "logs:*"
                 Resource: "arn:aws:logs:*:*:*"
+              - Effect: Allow
+                Action: "ssm:GetParameter"
+                Resource: "arn:aws:ssm:us-east-2:076279718063:parameter/user/key"
 
   AuthorizerLambda:
     Type: AWS::Lambda::Function
